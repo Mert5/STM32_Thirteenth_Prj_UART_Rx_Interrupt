@@ -102,7 +102,6 @@ int main(void)
   MX_GPIO_Init();
   MX_UART5_Init();
   /* USER CODE BEGIN 2 */
-  //HAL_UART_Receive_IT(&huart5, (uint8_t *) RxBuffer, sizeof(RxBuffer));
   HAL_UART_Receive_IT(&huart5, (uint8_t *) uart_rx_buffer, sizeof(uart_rx_buffer));
   /* USER CODE END 2 */
 
@@ -113,7 +112,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	 // GPIO_PinState buttonState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 
 	  if (uart_rx_complete)
 	  {
@@ -154,10 +152,6 @@ int main(void)
 			  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET); // LED = 0
 	  }
 
-	  /*if(uart_rx_complete==false)
-	  {
-	  	  HAL_UART_Receive_IT(&huart5, (uint8_t *) uart_rx_buffer, sizeof(uart_rx_buffer));
-	  }*/
 	  HAL_Delay(50);
   }
   /* USER CODE END 3 */
@@ -309,3 +303,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
